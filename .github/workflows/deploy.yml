@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages 
+name: Deploy Flask App
 
 on:
   push:
@@ -8,28 +8,34 @@ on:
 jobs:
 
   deploy:
+
     runs-on: ubuntu-latest
     
     steps:
+
     - uses: actions/checkout@v2
 
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.11.3
-
+        
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Build with Flask
+    - name: Build Flask app  
       run: |
         pip install -r requirements.txt
         python app.py build
 
+    - uses: danielgalvis98/procfile-action@v1.0.1
+      with:
+        procfile: Procfile # Set Procfile location
+
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3  
-      with: 
+      uses: peaceiris/actions-gh-pages@v3
+      with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build

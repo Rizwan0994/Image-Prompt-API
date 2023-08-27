@@ -28,5 +28,3 @@ def test_endpoint():
     return "Testing App"
 
 if __name__ == '__main__':
-    app.run()
-
