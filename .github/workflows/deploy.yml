@@ -30,9 +30,10 @@ jobs:
         pip install -r requirements.txt
         python app.py build
 
-    - uses: danielgalvis98/procfile-action@v1.0.1
-      with:
-        procfile: Procfile # Set Procfile location
+    - name: Install and run gunicorn
+      run: |
+        pip install gunicorn
+        gunicorn --bind 0.0.0.0:5000 app:app
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
