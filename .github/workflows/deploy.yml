@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: 3.x  # Choose the appropriate Python version
+          python-version: 3.11  # Update to the specific Python version you're using
 
       - name: Install dependencies
         run: |
@@ -25,4 +25,3 @@ jobs:
 
       - name: Run Flask app
         run: python app.py  # Replace with your Flask app filename
-
