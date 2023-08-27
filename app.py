@@ -27,6 +27,6 @@ def predict_caption():
 def test_endpoint():
     return "Testing App"
 
+# This block ensures the app runs only when executed directly, not when imported as a module
 if __name__ == '__main__':
-    app.run()
-
+    app.run(host='0.0.0.0', port=5000)  # Run on all available network interfaces
