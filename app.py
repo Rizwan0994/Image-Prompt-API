@@ -23,6 +23,10 @@ def predict_caption():
     print(caption)
     return jsonify({'caption': caption})
 
+@app.route('/test', methods=['GET'])
+def test_endpoint():
+    return "Testing App"
+
 if __name__ == '__main__':
     app.run()
 
