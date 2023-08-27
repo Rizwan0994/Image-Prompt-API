@@ -18,21 +18,15 @@ jobs:
         with:
           python-version: 3.11.3  # Choose the appropriate Python version
 
+      
       - name: Upgrade numpy
-        run: pip install --upgrade numpy
+        run: pip install --upgrade numpy    
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Gunicorn
-        run: |
-          pip install gunicorn
+      - name: Run Flask app
+        run: python app.py  # Replace with your Flask app filename
 
-      - name: Run Flask app with Gunicorn
-        run: |
-          gunicorn -b 0.0.0.0:5000 app:app  # Change app:app to your app's name and instance
-
-      - name: Complete
-        run: echo "Deployment complete"
